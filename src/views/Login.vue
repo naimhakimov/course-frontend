@@ -9,10 +9,12 @@ const formValue = reactive({ email: '', password: '' })
 const router = useRouter()
 
 async function onSubmit() {
-  loading.value = true
   try {
+    loading.value = true
     const user = await login(formValue)
-    localStorage.setItem('user', JSON.stringify(user))
+    if (user) {
+      localStorage.setItem('user', JSON.stringify(user))
+    }
     loading.value = false
     router.push('/')
   } catch (err) {

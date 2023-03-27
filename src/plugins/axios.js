@@ -9,7 +9,7 @@ export const HTTP = axios.create({
 })
 
 HTTP.interceptors.request.use(req => {
-  req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('user')).token}`
+  req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('user'))?.token}`
   return req
 })
 
@@ -19,9 +19,11 @@ HTTP.interceptors.response.use(
     const toast = useToast()
     if (Array.isArray(error?.response?.data)) {
       toast.error(error.response.data.join(', '))
-    } else if (error.response.data.message) {
-      toast.error(error.response.data.message)
-    } else {
+    }
+    // else if (error.response.data.message) {
+    //   toast.error(error.response.data.message)
+    // }
+    else {
       toast.error(error.message)
     }
   })

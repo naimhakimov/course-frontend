@@ -38,7 +38,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const user = JSON.parse(localStorage.getItem('user'))
+  const user = JSON.parse(localStorage.getItem('user') || null)
   const requireAuth = to.matched.some(record => record.meta?.auth)
   if (!user && requireAuth) {
     return next({ name: 'login' })

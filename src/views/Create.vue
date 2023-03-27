@@ -9,18 +9,12 @@ import { createCourse, getCourseById, updateCourse } from '@/services/http.servi
 
 const router = useRouter()
 const route = useRoute()
-
+const loading = ref(false)
 const form = reactive({
   title: '',
   content: '# Hello world'
 })
 const slug = ref(route.params.slug)
-
-watch(route, () => {
-  console.log(slug.value)
-  slug.value = route.params.slug
-})
-
 
 onMounted(async () => {
   if (slug.value) {
@@ -38,17 +32,13 @@ async function onSubmit() {
     return
   }
   try {
+    loading.value = true
     if (slug.value) {
-      await updateCourse(slug.value, {
-        ...form,
-        content: JSON.stringify(form.content)
-      })
+      await updateCourse(slug.value, form)
     } else {
-      await createCourse({
-        ...form,
-        content: JSON.stringify(form.content)
-      })
+      await createCourse(form)
     }
+    loading.value = false
     toast.success('Успешно сохранено!')
     router.push('/course')
   } catch (e) {
@@ -72,7 +62,9 @@ async function onSubmit() {
         <MdEditor required v-model='form.content' language='en-US' previewTheme='github' />
       </div>
 
-      <button type='button' class='btn btn-primary' @click='onSubmit'>{{ slug ? 'Обновить' : 'Создать' }}</button>
+      <button :disabled='loading' type='button' class='btn btn-primary' @click='onSubmit'>
+        {{ slug ? 'Обновить' : 'Создать' }}
+      </button>
     </form>
 
   </div>
