@@ -3,6 +3,7 @@
 
 <template>
   <main>
-    Home page
+    {{ $t('title') }}
+
   </main>
 </template>

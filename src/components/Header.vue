@@ -1,11 +1,20 @@
 <script setup>
 const noImage = 'https://media.istockphoto.com/id/1016744004/vector/profile-placeholder-image-gray-silhouette-no-photo.jpg?s=612x612&w=0&k=20&c=mB6A9idhtEtsFXphs1WVwW_iPBt37S2kJp6VpPhFeoA='
 const userData = JSON.parse(localStorage.getItem('user') || null)
+
+const langs = ['ru', 'tj']
 </script>
 
 <template>
   <header>
     {{ userData.user.first_name + ' ' + userData.user.last_name }}
+
+
+    <select v-model="$i18n.locale">
+      <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">
+        {{ lang }}
+      </option>
+    </select>
 
     <img :src="userData.user?.image?.url ?  userData.user?.image?.url : noImage"
          @error="$event.target.src = noImage"
