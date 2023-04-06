@@ -4,23 +4,48 @@ export function login(body) {
   return HTTP.post('/login', body)
 }
 
-export function getCourses() {
-  return HTTP.get('/courses')
+export function getSubjects() {
+  return HTTP.get('/subjects')
 }
 
-export function getCourseById(id) {
-  return HTTP.get(`/courses/${id}`)
+export function getUsers() {
+  return HTTP.get('/users')
 }
 
-export function createCourse(body) {
-  return HTTP.post('/courses', body)
+export function updateUserById(id, body) {
+  return HTTP.patch(`/users/${id}`, body)
 }
 
-export function updateCourse(slug, body) {
-  return HTTP.patch(`/courses/${slug}`, body)
+export function deleteUserById(id) {
+  return HTTP.delete(`/users/${id}`)
 }
 
-export function removeCourse(slug) {
-  return HTTP.delete(`/courses/${slug}`)
+export function getLectureList() {
+  return HTTP.get('/lectures')
 }
 
+export function createLecture(body) {
+  return HTTP.post('/lectures', body)
+}
+
+export function deleteLectureById(id) {
+  return HTTP.delete(`/lectures/${id}`)
+}
+
+//file
+
+export function uploadFile(file) {
+  return HTTP.post('/files/upload', {
+    file
+  }, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    },
+  })
+}
+
+export function removeFile(public_id) {
+  return HTTP.post('/files/remove', {
+    public_id
+  })
+}

@@ -1,6 +1,6 @@
 <script setup>
 const noImage = 'https://media.istockphoto.com/id/1016744004/vector/profile-placeholder-image-gray-silhouette-no-photo.jpg?s=612x612&w=0&k=20&c=mB6A9idhtEtsFXphs1WVwW_iPBt37S2kJp6VpPhFeoA='
-const userData = JSON.parse(localStorage.getItem('user') || null)
+const userData = JSON.parse(localStorage.getItem('user'))
 </script>
 
 <template>

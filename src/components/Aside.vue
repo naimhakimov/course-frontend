@@ -4,18 +4,19 @@ import { ref, watch } from 'vue'
 
 const items = [
   {
-    name: 'Главная',
-    icon: 'home',
+    name: 'Асоси',
     link: '/'
   },
   {
-    name: 'Курс',
-    icon: 'course',
-    link: '/course'
+    name: 'Истифодабардагон',
+    link: '/users'
+  },
+  {
+    name: 'Лексияхо',
+    link: '/lecture'
   },
   {
     name: 'Создать',
-    icon: 'create',
     link: '/create'
   }
 ]

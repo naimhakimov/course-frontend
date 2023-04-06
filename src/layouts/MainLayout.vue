@@ -26,7 +26,7 @@ import Aside from '@/components/Aside.vue'
   }
 
   .pages{
-    padding: 15px;
+    padding: 20px;
   }
 }
 </style>

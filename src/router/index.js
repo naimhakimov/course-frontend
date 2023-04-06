@@ -17,22 +17,16 @@ const router = createRouter({
       component: () => import('../views/Login.vue')
     },
     {
-      path: '/course',
-      name: 'course',
+      path: '/users',
+      name: 'users',
       meta: { layout: 'main', auth: true },
-      component: () => import('../views/Course.vue')
+      component: () => import('../views/Users/index.vue')
     },
     {
-      path: '/create',
-      name: 'create',
+      path: '/lecture',
+      name: 'lecture',
       meta: { layout: 'main', auth: true },
-      component: () => import('../views/Create.vue')
-    },
-    {
-      path: '/edit/:slug',
-      name: 'edit',
-      meta: { layout: 'main', auth: true },
-      component: () => import('../views/Create.vue')
+      component: () => import('../views/Lecture/index.vue')
     }
   ]
 })
