@@ -1,9 +1,11 @@
 <script setup>
 import Header from '@/components/Header.vue'
 import Aside from '@/components/Aside.vue'
+import BaseLoading from '@/components/BaseLoading.vue'
 </script>
 <template>
   <div class="main">
+    <BaseLoading />
     <Aside/>
     <div class="main-views">
       <Header/>
@@ -15,8 +17,6 @@ import Aside from '@/components/Aside.vue'
 </template>
 
 <style scoped lang="scss">
-@import "@/assets/styles/variables";
-
 .main {
   display: flex;
 

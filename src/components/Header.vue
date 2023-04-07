@@ -1,5 +1,4 @@
 <script setup>
-const noImage = 'https://media.istockphoto.com/id/1016744004/vector/profile-placeholder-image-gray-silhouette-no-photo.jpg?s=612x612&w=0&k=20&c=mB6A9idhtEtsFXphs1WVwW_iPBt37S2kJp6VpPhFeoA='
 const userData = JSON.parse(localStorage.getItem('user'))
 </script>
 
@@ -7,25 +6,24 @@ const userData = JSON.parse(localStorage.getItem('user'))
   <header>
     {{ userData.user.first_name + ' ' + userData.user.last_name }}
 
-    <img :src="userData.user?.image?.url ?  userData.user?.image?.url : noImage"
+    <img src='../assets/images/no-avatar.webp'
          @error="$event.target.src = noImage"
          alt="">
   </header>
 </template>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/variables";
 
 header {
   padding: 20px;
-  border-bottom: 1px solid $gray-400;
+  border-bottom: 1px solid var(--gray-400);
   position: sticky;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   column-gap: 15px;
   top: 0;
-  background: $white;
+  background: var(--white);
   z-index: 100;
 
   img {

@@ -24,8 +24,16 @@ export function getLectureList() {
   return HTTP.get('/lectures')
 }
 
+export function getLectureById(id) {
+  return HTTP.get(`/lectures/${id}`)
+}
+
 export function createLecture(body) {
   return HTTP.post('/lectures', body)
+}
+
+export function updateLecture(id, body) {
+  return HTTP.patch(`/lectures/${id}`, body)
 }
 
 export function deleteLectureById(id) {

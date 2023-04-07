@@ -5,26 +5,26 @@ import { ref, watch } from 'vue'
 const items = [
   {
     name: 'Асоси',
-    link: '/'
+    link: 'home'
   },
   {
     name: 'Истифодабардагон',
-    link: '/users'
+    link: 'users'
   },
   {
     name: 'Лексияхо',
-    link: '/lecture'
+    link: 'lecture'
   },
   {
-    name: 'Создать',
-    link: '/create'
-  }
+    name: 'Кори лаборатори ',
+    link: 'laboratory-work'
+  },
 ]
 
 const route = useRoute()
 const linkActive = ref(route.path)
 
-watch(route, (value, oldValue, onCleanup) => {
+watch(route, (value) => {
   linkActive.value = value.path
 })
 
@@ -39,7 +39,7 @@ function logout() {
     <ul class='aside-list'>
       <li class='aside__item'
           v-for='item in items'>
-        <router-link :to='item.link' class='flex' :class="linkActive === item.link ? 'active' : ''">
+        <router-link :to="'/' + item.link" class='flex' :class="linkActive.includes(item.link) ? 'active' : ''">
           {{ item.name }}
         </router-link>
       </li>
