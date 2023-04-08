@@ -47,6 +47,24 @@ const router = createRouter({
       component: () => import('../views/Laboratory-work/index.vue')
     },
     {
+      path: '/quiz',
+      name: 'quiz',
+      meta: { layout: 'main', auth: true },
+      component: () => import('../views/Quiz/index.vue')
+    },
+    {
+      path: '/quiz/create',
+      name: 'quiz-create',
+      meta: { layout: 'main', auth: true },
+      component: () => import('../views/Quiz/Create.vue')
+    },
+    {
+      path: '/quiz/edit/:id',
+      name: 'quiz-edit',
+      meta: { layout: 'main', auth: true },
+      component: () => import('../views/Quiz/Create.vue')
+    },
+    {
       path: '',
       redirect: '/home'
     }

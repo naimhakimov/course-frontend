@@ -6,7 +6,8 @@ const useLoader = useLoaderStore()
 
 export const HTTP = axios.create({
   //https://sharipova-sh-backend.cyclic.app/api
-  baseURL: 'https://sharipova-sh-backend.cyclic.app/api',
+  // baseURL: 'https://sharipova-sh-backend.cyclic.app/api',
+  baseURL: 'http://localhost:3000/api',
   headers: {
     'Content-Type': 'application/json'
   }

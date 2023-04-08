@@ -40,6 +40,28 @@ export function deleteLectureById(id) {
   return HTTP.delete(`/lectures/${id}`)
 }
 
+// quiz 
+
+export function getQuiz() {
+  return HTTP.get('/quiz')
+}
+
+export function getQuizById(id) {
+  return HTTP.get(`/quiz/${id}`)
+}
+
+export function craeteQuiz(body) {
+  return HTTP.post('/quiz', body)
+}
+
+export function updateQuiz(id, body) {
+  return HTTP.patch(`/quiz/${id}`, body)
+}
+
+export function removeQuizById(id) {
+  return HTTP.delete(`/quiz/${id}`)
+}
+
 //file
 
 export function uploadFile(file) {

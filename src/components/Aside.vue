@@ -5,19 +5,23 @@ import { ref, watch } from 'vue'
 const items = [
   {
     name: 'Асоси',
-    link: 'home'
+    link: 'home',
   },
   {
     name: 'Истифодабардагон',
-    link: 'users'
+    link: 'users',
   },
   {
     name: 'Лексияхо',
-    link: 'lecture'
+    link: 'lecture',
   },
   {
     name: 'Кори лаборатори ',
-    link: 'laboratory-work'
+    link: 'laboratory-work',
+  },
+  {
+    name: 'Тестхо',
+    link: 'quiz',
   },
 ]
 
@@ -35,26 +39,26 @@ function logout() {
 </script>
 
 <template>
-  <div class='aside'>
-    <ul class='aside-list'>
-      <li class='aside__item'
-          v-for='item in items'>
-        <router-link :to="'/' + item.link" class='flex' :class="linkActive.includes(item.link) ? 'active' : ''">
+  <div class="aside">
+    <ul class="aside-list">
+      <li class="aside__item" v-for="item in items" :key="item.link">
+        <router-link
+          :to="'/' + item.link"
+          class="flex"
+          :class="linkActive.includes(item.link) ? 'active' : ''"
+        >
           {{ item.name }}
         </router-link>
       </li>
-      <li class='aside__item' @click='logout'>
-        <a>
-          Выйти
-        </a>
+      <li class="aside__item" @click="logout">
+        <a> Выйти </a>
       </li>
     </ul>
-
   </div>
 </template>
 
 <style lang='scss' scoped>
-@import "./src/assets/styles/variables";
+@import './src/assets/styles/variables';
 
 .aside {
   padding: 20px 0;
@@ -75,8 +79,7 @@ function logout() {
   &__item {
     padding: 10px 20px;
     border-radius: 8px;
-    transition: .4s all;
-
+    transition: 0.4s all;
 
     &:has(.active) {
       background: $green;
