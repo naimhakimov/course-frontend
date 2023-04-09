@@ -4,10 +4,6 @@ import { ref, watch } from 'vue'
 
 const items = [
   {
-    name: 'Асоси',
-    link: 'home',
-  },
-  {
     name: 'Истифодабардагон',
     link: 'users',
   },
@@ -22,6 +18,14 @@ const items = [
   {
     name: 'Тестхо',
     link: 'quiz',
+  },
+  {
+    name: 'Адабиётхо',
+    link: 'material',
+  },
+  {
+    name: 'Масъалахо',
+    link: 'task',
   },
 ]
 

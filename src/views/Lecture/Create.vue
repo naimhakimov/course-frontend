@@ -2,10 +2,16 @@
 import { onMounted, reactive } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-import { createLecture, getLectureById, removeFile, updateLecture, uploadFile } from '@/services/http.service'
+import {
+  createLecture,
+  getLectureById,
+  removeFile,
+  updateLecture,
+  uploadFile,
+} from '@/services/http.service'
 import { toast } from '@/plugins/toast'
 
-const lecture = reactive({ title: '', file: null })
+const lecture = reactive({ title: '', file: null, description: '' })
 const route = useRoute()
 const router = useRouter()
 
@@ -14,6 +20,7 @@ onMounted(async () => {
     const lectureData = await getLectureById(route.params.id)
     lecture.title = lectureData.title
     lecture.file = lectureData.file
+    lecture.description = lectureData.description
   }
 })
 
@@ -38,10 +45,10 @@ async function onSubmit() {
   try {
     if (route.params.id) {
       await updateLecture(route.params.id, lecture)
-      await toast.success('Successfully updated')
+      await toast.success('Навсози карда шуд')
     } else {
       await createLecture(lecture)
-      await toast.success('Successfully created')
+      await toast.success('Сохта шуд')
     }
     await router.push('/lecture')
   } catch (err) {
@@ -51,52 +58,43 @@ async function onSubmit() {
 </script>
 
 <template>
-  <div class='mb-3 card p-3'>
-    <h3>{{ route.params.id ? 'Edit' : 'Create' }}</h3>
-    <input v-model='lecture.title' type='text' class='form-control mb-2' placeholder='some text'>
+  <div class="mb-3 card p-3">
+    <h3>{{ route.params.id ? 'Дохил кардан' : 'Сохтан' }}</h3>
+
+    <label>Ном</label>
+    <input
+      v-model="lecture.title"
+      type="text"
+      class="form-control mb-2"
+      placeholder="some text"
+    />
+
     <div>
-      <input type='file' class='form-control mb-2' accept='application/pdf' @change='uploadFileHandler($event)'>
+      <label class="form-label">Тавсиф</label>
+      <textarea v-model="lecture.description" class="form-control" rows="3"></textarea>
+    </div>
 
-      <div class='file' v-if='lecture.file'>
+    <div>
+      <label class="form-label">Файл</label>
+      <input
+        type="file"
+        class="form-control mb-2"
+        accept="application/pdf"
+        @change="uploadFileHandler($event)"
+      />
+
+      <div class="file" v-if="lecture.file">
         Pdf
-
-        <div class='file-remove' @click='deleteFile'>&times;</div>
+        <div class="file-remove" @click="deleteFile">&times;</div>
       </div>
     </div>
+
     <button
-      :disabled='!lecture.title && !lecture.file?.url'
-      class='btn btn-primary mt-2'
-      @click='onSubmit'>
-      {{ route.params.id ? 'Edit' : 'Create' }}
+      :disabled="!lecture.title && !lecture.file?.url"
+      class="btn btn-primary mt-2"
+      @click="onSubmit"
+    >
+      {{ route.params.id ? 'Дохил кардан' : 'Сохтан' }}
     </button>
   </div>
 </template>
-
-<style lang='scss'>
-.file {
-  padding: 10px;
-  width: max-content;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  word-break: revert;
-  background: var(--gray-400);
-  border-radius: 8px;
-  position: relative;
-
-  &-remove {
-    position: absolute;
-    right: -5px;
-    top: -5px;
-    width: 15px;
-    height: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background: var(--danger);
-    color: var(--white);
-    cursor: pointer;
-  }
-}
-</style>

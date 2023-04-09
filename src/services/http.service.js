@@ -1,13 +1,11 @@
 import { HTTP } from '@/plugins/axios'
 
+// auth
 export function login(body) {
   return HTTP.post('/login', body)
 }
 
-export function getSubjects() {
-  return HTTP.get('/subjects')
-}
-
+// users
 export function getUsers() {
   return HTTP.get('/users')
 }
@@ -20,6 +18,7 @@ export function deleteUserById(id) {
   return HTTP.delete(`/users/${id}`)
 }
 
+// lectures
 export function getLectureList() {
   return HTTP.get('/lectures')
 }
@@ -40,7 +39,7 @@ export function deleteLectureById(id) {
   return HTTP.delete(`/lectures/${id}`)
 }
 
-// quiz 
+//quiz
 
 export function getQuiz() {
   return HTTP.get('/quiz')
@@ -62,8 +61,52 @@ export function removeQuizById(id) {
   return HTTP.delete(`/quiz/${id}`)
 }
 
-//file
+//materials
 
+export function getMaterials() {
+  return HTTP.get('/materials')
+}
+
+export function createMaterial(body) {
+  return HTTP.post('/materials', body)
+}
+
+export function updateMaterial(id, body) {
+  return HTTP.patch(`/materials/${id}`, body)
+}
+
+export function getMaterialById(id) {
+  return HTTP.get(`/materials/${id}`)
+}
+
+export function deleteMaterialById(id) {
+  return HTTP.delete(`/materials/${id}`)
+}
+
+//tasks
+
+export function getTasks() {
+  return HTTP.get('/tasks')
+}
+
+export function getTaskById(id) {
+  return HTTP.get(`/tasks/${id}`)
+}
+
+export function createTask(body) {
+  return HTTP.post('/tasks', body)
+}
+
+export function updateTaskById(id, body) {
+  return HTTP.patch(`/tasks/${id}`, body)
+}
+
+export function removeTaskById(id) {
+  return HTTP.delete(`/tasks/${id}`)
+}
+
+
+//file
 export function uploadFile(file) {
   return HTTP.post('/files/upload', {
     file

@@ -41,10 +41,10 @@ function changeRadioButton(index) {
 async function onSubmit() {
   if (!route.params['id']) {
     await craeteQuiz(quiz)
-    await toast.success('Successfully created')
+    await toast.success('Сохта шуд')
   } else {
     await updateQuiz(route.params['id'], quiz)
-    await toast.success('Successfully updated')
+    await toast.success('Навсози карда шуд')
   }
   await router.push('/quiz')
 }
@@ -52,9 +52,9 @@ async function onSubmit() {
 
 <template>
   <div class="mb-3 card p-3">
-    <h3>{{ route.params.id ? 'Edit' : 'Create' }}</h3>
+    <h3>{{ route.params.id ? 'Дохил кардан' : 'Сохтан' }}</h3>
     <div>
-      <label class="form-label">question title</label>
+      <label class="form-label">Ном</label>
       <input
         v-model="quiz.question"
         type="text"
@@ -96,7 +96,7 @@ async function onSubmit() {
       :disabled="!quiz.question && quiz.options.length !== 4"
       class="btn btn-primary mt-2"
     >
-      {{ route.params.id ? 'Edit' : 'Create' }}
+      {{ route.params.id ? 'Дохил кардан' : 'Сохтан' }}
     </button>
   </div>
 </template>

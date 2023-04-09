@@ -1,15 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/Home.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
-      path: '/home',
-      name: 'home',
-      component: HomeView,
-      meta: { layout: 'main', auth: true }
-    },
     {
       path: '/login',
       name: 'login',
@@ -63,10 +56,46 @@ const router = createRouter({
       name: 'quiz-edit',
       meta: { layout: 'main', auth: true },
       component: () => import('../views/Quiz/Create.vue')
+    }, 
+    {
+      path: '/material',
+      name: 'material',
+      meta: { layout: 'main', auth: true },
+      component: () => import('../views/Material/index.vue')
+    }, 
+    {
+      path: '/material/create',
+      name: 'material-create',
+      meta: { layout: 'main', auth: true },
+      component: () => import('../views/Material/Create.vue')
+    },
+    {
+      path: '/material/edit/:id',
+      name: 'material-edit',
+      meta: { layout: 'main', auth: true },
+      component: () => import('../views/Material/Create.vue')
+    },
+     {
+      path: '/task',
+      name: 'task',
+      meta: { layout: 'main', auth: true },
+      component: () => import('../views/Task/index.vue')
+    },
+    {
+      path: '/task/create',
+      name: 'task-create',
+      meta: { layout: 'main', auth: true },
+      component: () => import('../views/Task/Create.vue')
+    },
+    {
+      path: '/task/edit/:id',
+      name: 'task-edit',
+      meta: { layout: 'main', auth: true },
+      component: () => import('../views/Task/Create.vue')
     },
     {
       path: '',
-      redirect: '/home'
+      redirect: '/users'
     }
   ]
 })
