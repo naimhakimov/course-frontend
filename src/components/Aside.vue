@@ -1,5 +1,5 @@
 <script setup>
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { ref, watch } from 'vue'
 
 const items = [
@@ -30,6 +30,7 @@ const items = [
 ]
 
 const route = useRoute()
+const router = useRouter()
 const linkActive = ref(route.path)
 
 watch(route, (value) => {
@@ -38,7 +39,7 @@ watch(route, (value) => {
 
 function logout() {
   localStorage.clear()
-  window.location.reload()
+  router.push('/login')
 }
 </script>
 
