@@ -33,7 +33,7 @@ onMounted(() => {
 
 <template>
   <form class='card p-4'>
-    <h1>Панель администратора</h1>
+    <h1>Панели маъмур</h1>
     <div class='mb-3'>
       <label for='email' class='form-label'>Email</label>
       <input v-model='formValue.email' type='email' class='form-control' id='email'>
@@ -48,7 +48,7 @@ onMounted(() => {
       <input class='form-check-input' id='remember' type='checkbox' value=''
              aria-label='Checkbox for following text input'>
 
-      <label class='form-label mx-1' for='remember'>Запомнить</label>
+      <label class='form-label mx-1' for='remember'>Сабт кардан</label>
     </div>
 
     <button class='btn btn-primary' type='button' @click='onSubmit' :disabled='loading'>
@@ -59,11 +59,7 @@ onMounted(() => {
         </div>
       </template>
 
-      <template v-else>Вход</template>
+      <template v-else>Даромадан</template>
     </button>
   </form>
 </template>
-
-<style>
-
-</style>
