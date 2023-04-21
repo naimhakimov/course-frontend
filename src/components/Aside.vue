@@ -27,6 +27,10 @@ const items = [
     name: 'Масъалахо',
     link: 'task',
   },
+  {
+    name: 'Видеохо',
+    link: 'video',
+  },
 ]
 
 const route = useRoute()

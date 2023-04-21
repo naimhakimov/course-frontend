@@ -105,6 +105,28 @@ export function removeTaskById(id) {
   return HTTP.delete(`/tasks/${id}`)
 }
 
+//video
+
+export function getVideos() {
+  return HTTP.get('/videos')
+}
+
+
+export function getVideoById(id) {
+  return HTTP.get(`/videos/${id}`)
+}
+
+export function createVideo(body) {
+  return HTTP.post('/videos', body)
+}
+
+export function updateVideoById(id, body) {
+  return HTTP.patch(`/videos/${id}`, body)
+}
+
+export function removeVideoById(id) {
+  return HTTP.delete(`/videos/${id}`)
+}
 
 //file
 export function uploadFile(file) {

@@ -12,6 +12,10 @@
   border-radius: 8px;
   position: relative;
 
+  video {
+    height: 100%;
+  }
+
   &-remove {
     position: absolute;
     right: -5px;

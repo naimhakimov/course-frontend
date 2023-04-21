@@ -94,6 +94,24 @@ const router = createRouter({
       component: () => import('../views/Task/Create.vue')
     },
     {
+      path: '/video',
+      name: 'video',
+      meta: { layout: 'main', auth: true },
+      component: () => import('../views/Video/index.vue')
+    },
+    {
+      path: '/video/create',
+      name: 'video-create',
+      meta: { layout: 'main', auth: true },
+      component: () => import('../views/Video/Create.vue')
+    },
+    {
+      path: '/video/edit/:id',
+      name: 'video-edit',
+      meta: { layout: 'main', auth: true },
+      component: () => import('../views/Video/Create.vue')
+    },
+    {
       path: '',
       redirect: '/users'
     }
