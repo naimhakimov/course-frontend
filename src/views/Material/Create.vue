@@ -55,7 +55,6 @@ async function onSubmit() {
       v-model="material.title"
       type="text"
       class="form-control mb-2"
-      placeholder="some text"
     />
 
     <div>

@@ -59,7 +59,6 @@ async function onSubmit() {
         v-model="quiz.question"
         type="text"
         class="form-control mb-2"
-        placeholder="some text"
       />
     </div>
 

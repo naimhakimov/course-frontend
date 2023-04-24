@@ -66,7 +66,6 @@ async function onSubmit() {
       v-model="lecture.title"
       type="text"
       class="form-control mb-2"
-      placeholder="some text"
     />
 
     <div>

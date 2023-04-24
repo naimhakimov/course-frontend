@@ -60,7 +60,7 @@ function logout() {
         </router-link>
       </li>
       <li class="aside__item" @click="logout">
-        <a> Выйти </a>
+        <a> Баромадан </a>
       </li>
     </ul>
   </div>
