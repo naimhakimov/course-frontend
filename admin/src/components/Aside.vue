@@ -11,10 +11,10 @@ const items = [
     name: 'Лексияхо',
     link: 'lecture',
   },
-  {
-    name: 'Кори лаборатори ',
-    link: 'laboratory-work',
-  },
+  // {
+  //   name: 'Кори лаборатори ',
+  //   link: 'laboratory-work',
+  // },
   {
     name: 'Тестхо',
     link: 'quiz',
