@@ -67,7 +67,7 @@ function logout() {
 </template>
 
 <style lang='scss' scoped>
-@import './src/assets/styles/variables';
+@import '@/assets/styles/variables';
 
 .aside {
   padding: 20px 0;

@@ -12,16 +12,16 @@ import ru from '@/assets/i18n/ru'
 import tj from '@/assets/i18n/tj'
 
 const messages = {
-  ru: ru,
-  tj: tj
+    ru: ru,
+    tj: tj
 }
 
 const i18n = createI18n({
-  globalInjection: true,
-  locale: 'ru',
-  fallbackLocale: 'ru',
-  legacy: false,
-  messages
+    globalInjection: true,
+    locale: 'ru',
+    fallbackLocale: 'ru',
+    legacy: false,
+    messages
 })
 const app = createApp(App)
 app.use(createPinia())
