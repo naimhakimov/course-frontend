@@ -10,6 +10,7 @@ import {
   uploadFile,
 } from '@/services/http.service'
 import { toast } from '@/plugins/toast'
+import { URL_FILE } from '@/url.js'
 
 const lecture = reactive({ title: '', file: null, description: '' })
 const route = useRoute()
@@ -26,7 +27,8 @@ onMounted(async () => {
 
 async function uploadFileHandler(event) {
   try {
-    lecture.file = await uploadFile(event.target.files[0])
+    const file = await uploadFile(event.target.files[0])
+    lecture.file = file.url
   } catch (err) {
     throw err
   }
@@ -34,7 +36,7 @@ async function uploadFileHandler(event) {
 
 async function deleteFile() {
   try {
-    await removeFile(lecture.file.public_id)
+    await removeFile(lecture.file)
     lecture.file = null
   } catch (e) {
     throw e
@@ -83,13 +85,13 @@ async function onSubmit() {
       />
 
       <div class="file" v-if="lecture.file">
-        Pdf
+        <a target='_blank' :href='URL_FILE + lecture.file'>PDF</a>
         <div class="file-remove" @click="deleteFile">&times;</div>
       </div>
     </div>
 
     <button
-      :disabled="!lecture.title && !lecture.file?.url"
+      :disabled="!lecture.title && !lecture?.file"
       class="btn btn-primary mt-2"
       @click="onSubmit"
     >

@@ -1,0 +1,1 @@
+export const URL_FILE = 'http://localhost:3000/'

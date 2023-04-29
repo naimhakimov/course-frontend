@@ -16,7 +16,7 @@ onMounted(async () => {
 async function removeLecture(item) {
   const isDelete = confirm('Оё шумо дар ҳақиқат мехоҳед нест кунед?')
   if (isDelete) {
-    await removeFile(item.file.public_id)
+    await removeFile(item.file)
     await deleteLectureById(item._id)
     lectureList.value = lectureList.value.filter(
       (lecture) => lecture._id !== item._id

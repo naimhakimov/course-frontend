@@ -139,8 +139,8 @@ export function uploadFile(file) {
   })
 }
 
-export function removeFile(public_id) {
+export function removeFile(url) {
   return HTTP.post('/files/remove', {
-    public_id
+    url
   })
 }

@@ -7,9 +7,10 @@ import {
   getVideoById,
   removeFile,
   updateVideoById,
-  uploadFile,
+  uploadFile
 } from '@/services/http.service'
 import { toast } from '@/plugins/toast'
+import { URL_FILE } from '@/url.js'
 
 const video = reactive({ title: '', file: null, description: '' })
 const route = useRoute()
@@ -26,7 +27,8 @@ onMounted(async () => {
 
 async function uploadFileHandler(event) {
   try {
-    video.file = await uploadFile(event.target.files[0])
+    const file = await uploadFile(event.target.files[0])
+    video.file = file.url
   } catch (err) {
     throw err
   }
@@ -34,7 +36,7 @@ async function uploadFileHandler(event) {
 
 async function deleteFile() {
   try {
-    await removeFile(video.file.public_id)
+    await removeFile(video.file)
     video.file = null
   } catch (e) {
     throw e
@@ -58,43 +60,43 @@ async function onSubmit() {
 </script>
 
 <template>
-  <div class="mb-3 card p-3">
+  <div class='mb-3 card p-3'>
     <h3>{{ route.params.id ? 'Дохил кардан' : 'Сохтан' }}</h3>
 
     <label>Ном</label>
     <input
-      v-model="video.title"
-      type="text"
-      class="form-control mb-2"
+      v-model='video.title'
+      type='text'
+      class='form-control mb-2'
     />
 
     <div>
-      <label class="form-label">Тавсиф</label>
-      <textarea v-model="video.description" class="form-control" rows="3"></textarea>
+      <label class='form-label'>Тавсиф</label>
+      <textarea v-model='video.description' class='form-control' rows='3'></textarea>
     </div>
 
     <div>
-      <label class="form-label">Файл</label>
+      <label class='form-label'>Файл</label>
       <input
-        type="file"
-        class="form-control mb-2"
-        @change="uploadFileHandler($event)"
+        type='file'
+        class='form-control mb-2'
+        @change='uploadFileHandler($event)'
       />
 
-      <div class="file" v-if="video.file">
-        <video width="400" controls>
-          <source :src="video.file.url" type="video/mp4">
-<!--          <source src="movie.ogg" type="video/ogg">-->
+      <div class='file' v-if='video?.file'>
+        <video width='400' controls>
+          <source :src='URL_FILE + video.file' type='video/mp4'>
+          <!--          <source src="movie.ogg" type="video/ogg">-->
           Your browser does not support the video tag.
         </video>
-        <div class="file-remove" @click="deleteFile">&times;</div>
+        <div class='file-remove' @click='deleteFile'>&times;</div>
       </div>
     </div>
 
     <button
-      :disabled="!video.title && !video.file?.url"
-      class="btn btn-primary mt-2"
-      @click="onSubmit"
+      :disabled='!video.title && !video.file'
+      class='btn btn-primary mt-2'
+      @click='onSubmit'
     >
       {{ route.params.id ? 'Дохил кардан' : 'Сохтан' }}
     </button>

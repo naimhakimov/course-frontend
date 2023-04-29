@@ -8,7 +8,7 @@ import {
   removeFile,
   uploadFile,
 } from '@/services/http.service.js'
-
+import { URL_FILE } from '@/url.js'
 import {toast} from '@/plugins/toast.js'
 
 const route = useRoute()
@@ -26,7 +26,8 @@ onMounted(async () => {
 })
 
 async function uploadFileHandler(key, event) {
-  material[key] = await uploadFile(event.target.files[0])
+  const file = await uploadFile(event.target.files[0])
+  material[key] = file.url
 }
 
 async function deleteFile(key, id) {
@@ -67,10 +68,10 @@ async function onSubmit() {
       />
 
       <div class="file" v-if="material.file">
-        Pdf
+        <a target="_blank" :href='URL_FILE + material.file'>PDF</a>
         <div
           class="file-remove"
-          @click="deleteFile('file', material.file.public_id)"
+          @click="deleteFile('file', material.file)"
         >
           &times;
         </div>
@@ -85,14 +86,13 @@ async function onSubmit() {
         accept="image/png, image/jpg, image/jpeg"
         @change="uploadFileHandler('photo', $event)"
       />
-
-      <div class="photo" v-if="material.photo">
-        <a :href="material.photo.url" target="_blank"
-          ><img :src="material.photo.url" alt=""
+      <div class="photo" v-if="material?.photo">
+        <a :href="URL_FILE + material.photo" target="_blank"
+          ><img :src="URL_FILE + material.photo" alt=""
         /></a>
         <div
           class="file-remove"
-          @click="deleteFile('photo', material.photo.public_id)"
+          @click="deleteFile('photo', material.photo)"
         >
           &times;
         </div>
@@ -100,7 +100,7 @@ async function onSubmit() {
     </div>
 
     <button
-      :disabled="!material.title && !material?.file?.url"
+      :disabled="!material.title && !material?.file"
       class="btn btn-primary mt-2"
       @click="onSubmit"
     >

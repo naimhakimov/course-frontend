@@ -7,11 +7,11 @@ export const schema = new Schema({
     required: true
   },
   photo: {
-    type: Object,
+    type: String,
     default: null
   },
   file: {
-    type: Object,
+    type: String,
     required: true
   },
   description: {
