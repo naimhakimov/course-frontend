@@ -34,8 +34,6 @@ async function deleteUser(id) {
           <th scope="col">ID</th>
           <th scope="col">Ном</th>
           <th scope="col">Email</th>
-          <th scope="col">Номери тел</th>
-          <th scope="col">Сурога</th>
           <th scope="col"></th>
           <th scope="col"></th>
         </tr>
@@ -46,8 +44,6 @@ async function deleteUser(id) {
           <th scope="row">{{ user._id }}</th>
           <td>{{ user.first_name + ' ' + user.last_name }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ user.phone }}</td>
-          <td>{{ user.address ?? '-' }}</td>
           <td>
             <div class="form-check form-switch">
               <input

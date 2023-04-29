@@ -47,9 +47,27 @@ export const getCurrentUser = async (req, res, next) => {
     if (req.user.active) {
       res.send(req.user)
     } else {
-      res.status({message: 'Not found user'})
+      res.status({ message: 'Not found user' })
     }
   } catch (err) {
     next(err)
+  }
+}
+
+export const initialUser = async () => {
+  try {
+    const users = await User.find()
+    if (!users.length) {
+      const user = new User({
+        first_name: 'Sh',
+        last_name: 'Sharipova',
+        email: 'sh@mail.ru',
+        password: 'qwerty',
+        role: 'admin'
+      })
+      await user.save()
+    }
+  } catch (e) {
+    throw e
   }
 }
