@@ -5,7 +5,7 @@
   "type": "module",
   "description": "",
   "scripts": {
-    "start": "concurrently \"nodemon ./server\" \"vite ./admin\"",
+    "start": "concurrently \"nodemon ./server\" \"vite ./client",
     "build": "vite build",
     "preview": "vite preview"
   },

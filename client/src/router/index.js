@@ -112,8 +112,20 @@ const router = createRouter({
       component: () => import('../views/Video/Create.vue')
     },
     {
+      path: '/client',
+      name: 'client',
+      component: () => import('../views/Client/index.vue'),
+      meta: { layout: 'client', auth: false },
+    },
+    {
+      path: '/client/lecture',
+      name: 'client-lecture',
+      component: () => import('../views/Client/Lecture.vue'),
+      meta: { layout: 'client', auth: false },
+    },
+    {
       path: '',
-      redirect: '/users'
+      redirect: '/client'
     }
   ]
 })
