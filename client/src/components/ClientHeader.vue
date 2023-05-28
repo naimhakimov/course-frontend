@@ -15,9 +15,9 @@
         <li><i class='fa fa-times'></i></li>
         <li><router-link to='/client'>Асосӣ</router-link></li>
         <li><router-link to='/client/lecture'>Лексия</router-link></li>
-        <li><a href='suporish.html'>Супориш</a></li>
-        <li><a href='test.html'>Тест</a></li>
-        <li><a href='adabiyot.html'>Адабиёт</a></li>
+        <li><router-link to='/client/task'>Супориш</router-link></li>
+        <li><router-link to='/client/quiz'>Тест</router-link></li>
+        <li><router-link to='/client/material'>Адабиёт</router-link></li>
         <li><a class='login act' href='login.html'>Даромад</a></li>
       </ul>
     </div>

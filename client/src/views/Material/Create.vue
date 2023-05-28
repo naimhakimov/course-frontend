@@ -51,12 +51,12 @@ async function onSubmit() {
   <div class="mb-3 card p-3">
     <h3>{{ route.params.id ? 'Дохил кардан' : 'Сохтан' }}</h3>
 
-    <label>Ном</label>
-    <input
+    <label>Тавсиф</label>
+    <textarea
       v-model="material.title"
       type="text"
       class="form-control mb-2"
-    />
+    ></textarea>
 
     <div>
       <label class="form-label">Файл</label>

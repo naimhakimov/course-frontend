@@ -10,6 +10,10 @@ const schema = new Schema({
   result: {
     type: String,
     required: true
+  },
+  quiz: {
+    type: Array,
+    required: true
   }
 }, {
   versionKey: false

@@ -124,6 +124,30 @@ const router = createRouter({
       meta: { layout: 'client', auth: false },
     },
     {
+      path: '/client/lecture/:id',
+      name: 'client-lecture-by-id',
+      component: () => import('../views/Client/Lecture.vue'),
+      meta: { layout: 'client', auth: false },
+    },
+    {
+      path: '/client/material',
+      name: 'client-material',
+      component: () => import('../views/Client/Material.vue'),
+      meta: { layout: 'client', auth: false },
+    },
+    {
+      path: '/client/quiz',
+      name: 'client-quiz',
+      component: () => import('../views/Client/Quiz.vue'),
+      meta: { layout: 'client', auth: false },
+    },
+    {
+      path: '/client/task',
+      name: 'client-task',
+      component: () => import('../views/Client/Task.vue'),
+      meta: { layout: 'client', auth: false },
+    },
+    {
       path: '',
       redirect: '/client'
     }

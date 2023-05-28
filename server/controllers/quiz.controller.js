@@ -25,20 +25,20 @@ export const checkQuiz = async (req, res, next) => {
     if (!Array.isArray(req.body)) {
       return res.status(400)
     }
-    const quizData = await Quiz.find().select('+answer')
+    const quizData = await Quiz.find()
     const bodyData = req.body.map((quiz) => {
       const findItem = JSON.parse(JSON.stringify(quizData)).find(q => q._id === quiz._id)
       return {
         ...findItem,
-        correct: !!findItem.options.find(answer => answer.uid === quiz.answer)
+        correct: quiz.options.filter(item => item.answer)[0]?.uid === findItem.answer
       }
     })
     const quizLength = quizData.length
     const quizLengthCorrect = bodyData.filter(quiz => quiz.correct).length
-    const result = new Result({ user: req.user._id, result: `${quizLength}/${quizLengthCorrect}` })
+    const result = new Result({ user: req.user._id, result: `${quizLength}/${quizLengthCorrect}`, quiz: bodyData })
     const resultUser = await result.save()
 
-    res.send({ result: resultUser, quiz: bodyData })
+    res.send({ ...JSON.parse(JSON.stringify(resultUser)), quiz: bodyData })
   } catch (err) {
     next(err)
   }

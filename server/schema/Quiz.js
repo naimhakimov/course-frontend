@@ -10,8 +10,7 @@ const schema = new Schema({
     required: true
   },
   answer: {
-    type: String,
-    select: false
+    type: String
   }
 }, {
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
