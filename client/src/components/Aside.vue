@@ -24,7 +24,7 @@ const items = [
     link: 'material',
   },
   {
-    name: 'Масъалахо',
+    name: 'Супориш',
     link: 'task',
   },
   {
