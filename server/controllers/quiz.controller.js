@@ -30,7 +30,8 @@ export const checkQuiz = async (req, res, next) => {
       const findItem = JSON.parse(JSON.stringify(quizData)).find(q => q._id === quiz._id)
       return {
         ...findItem,
-        correct: quiz.options.filter(item => item.answer)[0]?.uid === findItem.answer
+        correct: quiz.options.filter(item => item.answer)[0]?.uid === findItem.answer,
+        uid: quiz.options.filter(item => item.answer)[0]?.uid
       }
     })
     const quizLength = quizData.length

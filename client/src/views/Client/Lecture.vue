@@ -3,14 +3,14 @@ import { ref, watch, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { HTTP } from '@/plugins/axios'
 import { URL_FILE } from '@/url'
+import { QuillEditor } from '@vueup/vue-quill'
 
 const lectures = ref([])
-const lecture = ref([])
+const lecture = ref(null)
 const route = useRoute()
 
 onMounted(async () => {
   lectures.value = await HTTP.get('/lectures')
-  lecture.value = lectures.value[0]
 })
 
 watch(route, (value) => {
@@ -35,12 +35,11 @@ watch(route, (value) => {
           </div>
         </div>
       </div>
-      <div class='lecture_right'>
+      <div class='lecture_right' v-if='lecture'>
         <div class='lecture_right_name'>
           <h1>{{ lecture.title }}</h1>
         </div>
-        <div class='lecture_right_text'>
-          <p>{{ lecture.description }}</p>
+        <div class='lecture_right_text' v-html='lecture.description'>
         </div>
         <div class='lecture_file'>
 

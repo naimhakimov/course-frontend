@@ -142,9 +142,21 @@ const router = createRouter({
       meta: { layout: 'client', auth: false },
     },
     {
+      path: '/client/task/:id',
+      name: 'client-task-id',
+      component: () => import('../views/Client/Task.vue'),
+      meta: { layout: 'client', auth: false },
+    },
+    {
       path: '/client/task',
       name: 'client-task',
       component: () => import('../views/Client/Task.vue'),
+      meta: { layout: 'client', auth: false },
+    },
+    {
+      path: '/client/login',
+      name: 'client-login',
+      component: () => import('../views/Client/Login.vue'),
       meta: { layout: 'client', auth: false },
     },
     {

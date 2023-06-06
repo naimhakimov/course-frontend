@@ -15,7 +15,7 @@ async function onSubmit() {
     if (user) {
       localStorage.setItem('user', JSON.stringify(user))
       loading.value = false
-      return await router.push('/')
+      return await router.push('/users')
     }
     loading.value = false
   } catch (err) {

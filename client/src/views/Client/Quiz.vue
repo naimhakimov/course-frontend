@@ -89,7 +89,7 @@ async function removeResult() {
             :class="
               quiz.answer === item.uid && quiz.correct
                 ? 'text-success'
-                : quiz.answer === item.uid && !quiz.correct && 'text-danger'
+                : quiz.uid === item.uid && !quiz.correct && 'text-danger'
             "
           >
             {{ index + 1 + '.' + item.title }}

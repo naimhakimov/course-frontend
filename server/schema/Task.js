@@ -7,8 +7,8 @@ const schema = new Schema({
     required: true,
     unique: true
   },
-  tasks: {
-    type: Array,
+  description: {
+    type: String,
     required: true
   },
   slug: {

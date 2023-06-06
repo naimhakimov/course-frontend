@@ -19,7 +19,7 @@ const __dirname = dirname(__filename)
 
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false, limit: "50mb" }))
 app.use('/docs', serve, setup(data))
 
 app.use('/api', routes)

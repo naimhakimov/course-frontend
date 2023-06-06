@@ -18,7 +18,7 @@
         <li><router-link to='/client/task'>Супориш</router-link></li>
         <li><router-link to='/client/quiz'>Тест</router-link></li>
         <li><router-link to='/client/material'>Адабиёт</router-link></li>
-        <li><a class='login act' href='login.html'>Даромад</a></li>
+        <li><router-link to='/client/login'  class='login act'>Даромад</router-link></li>
       </ul>
     </div>
   </header>
@@ -42,6 +42,7 @@ ul {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1000;
 }
 
 .header_left {
