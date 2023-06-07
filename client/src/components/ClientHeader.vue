@@ -1,3 +1,13 @@
+<script setup>
+import {ref} from 'vue'
+const user = ref(localStorage.getItem('user'))
+
+function logout() {
+  localStorage.clear()
+  location.reload()
+}
+</script>
+
 <template>
   <header class='header'>
     <div class='header_left'>
@@ -14,11 +24,17 @@
       <ul id='active'>
         <li><i class='fa fa-times'></i></li>
         <li><router-link to='/client'>Асосӣ</router-link></li>
-        <li><router-link to='/client/lecture'>Лексия</router-link></li>
-        <li><router-link to='/client/task'>Супориш</router-link></li>
-        <li><router-link to='/client/quiz'>Тест</router-link></li>
-        <li><router-link to='/client/material'>Адабиёт</router-link></li>
-        <li><router-link to='/client/login'  class='login act'>Даромад</router-link></li>
+        <template v-if='user'>
+          <li><router-link to='/client/lecture'>Лексия</router-link></li>
+          <li><router-link to='/client/task'>Супориш</router-link></li>
+          <li><router-link to='/client/quiz'>Тест</router-link></li>
+          <li><router-link to='/client/material'>Адабиёт</router-link></li>
+          <li><a @click='logout' class='login act'>Баромадан</a></li>
+        </template>
+        <template v-else>
+          <li><router-link to='/client/login'  class='login act'>Даромад</router-link></li>
+        </template>
+
       </ul>
     </div>
   </header>

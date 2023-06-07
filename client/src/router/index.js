@@ -121,37 +121,37 @@ const router = createRouter({
       path: '/client/lecture',
       name: 'client-lecture',
       component: () => import('../views/Client/Lecture.vue'),
-      meta: { layout: 'client', auth: false },
+      meta: { layout: 'client', auth: true },
     },
     {
       path: '/client/lecture/:id',
       name: 'client-lecture-by-id',
       component: () => import('../views/Client/Lecture.vue'),
-      meta: { layout: 'client', auth: false },
+      meta: { layout: 'client', auth: true },
     },
     {
       path: '/client/material',
       name: 'client-material',
       component: () => import('../views/Client/Material.vue'),
-      meta: { layout: 'client', auth: false },
+      meta: { layout: 'client', auth: true },
     },
     {
       path: '/client/quiz',
       name: 'client-quiz',
       component: () => import('../views/Client/Quiz.vue'),
-      meta: { layout: 'client', auth: false },
+      meta: { layout: 'client', auth: true },
     },
     {
       path: '/client/task/:id',
       name: 'client-task-id',
       component: () => import('../views/Client/Task.vue'),
-      meta: { layout: 'client', auth: false },
+      meta: { layout: 'client', auth: true },
     },
     {
       path: '/client/task',
       name: 'client-task',
       component: () => import('../views/Client/Task.vue'),
-      meta: { layout: 'client', auth: false },
+      meta: { layout: 'client', auth: true },
     },
     {
       path: '/client/login',
@@ -170,7 +170,7 @@ router.beforeEach((to, from, next) => {
   const user = JSON.parse(localStorage.getItem('user') || null)
   const requireAuth = to.matched.some(record => record.meta?.auth)
   if (!user && requireAuth) {
-    return next({ name: 'login' })
+    return next({ name: 'client' })
   } else {
     next()
   }

@@ -1,46 +1,63 @@
+<script setup>
+import { ref, reactive } from 'vue'
+import { useRouter } from 'vue-router'
+import { login, register } from '@/services/http.service'
+
+const router = useRouter()
+
+const tab = ref('login')
+const loginForm = reactive({ email: '', password: '' })
+const registerForm = reactive({ first_name: '', last_name: '', email: '', password: '' })
+
+async function onSubmit(event) {
+  try {
+    event.preventDefault()
+    let data = null
+    if (tab.value === 'login') {
+      data = await login(loginForm)
+    } else {
+      data = await register(registerForm)
+    }
+    await router.push('/client')
+    localStorage.setItem('user', JSON.stringify(data))
+    location.reload()
+  } catch (err) {
+    throw err
+  }
+}
+
+function clickHandler(type) {
+  tab.value = type
+}
+</script>
 <template>
-  <div class="lecture">
-    <div class="login_form">
-      <form action="#" method="post">
-        <div class="reg_h1">
-          <div @click="log()" class="log_b log_act" id="log_b">Даромад</div>
-          <div @click="reg()" class="reg_b" id="reg_b">Бақайдгирӣ</div>
+  <div class='lecture'>
+    <div class='login_form'>
+      <form @submit='onSubmit($event)'>
+        <div class='reg_h1'>
+          <div @click="clickHandler('login')" class='log_b' :class="tab === 'login' && ' log_act'" id='log_b'>Даромад
+          </div>
+          <div @click="clickHandler('register')" class='reg_b' :class="tab === 'register' && ' log_act'" id='reg_b'>
+            Бақайдгирӣ
+          </div>
         </div>
-        <div id="log_input">
-          <input class="log" type="text" name="login" placeholder="E-mail">
-          <input class="log" type="password" name="password" placeholder="Парол">
-          <input class="submit" type="submit" value="Даромад">
+        <div id='log_input' v-if="tab === 'login'">
+          <input v-model='loginForm.email' class='log' type='text' name='login' placeholder='E-mail'>
+          <input v-model='loginForm.password' class='log' type='password' name='password' placeholder='Парол'>
+          <input :disabled='!loginForm.email && !loginForm.password' class='submit' type='submit' value='Даромад'>
         </div>
-        <div id="reg_input" class="none">
-          <input class="log" type="text" name="name" placeholder="Ном">
-          <input class="log" type="text" name="name" placeholder="Насаб">
-          <input class="log" type="text" name="login" placeholder="E-mail">
-          <input class="log" type="text" name="password_reg" placeholder="Парол">
-          <input class="submit" type="submit" value="Бақайдгирӣ">
+        <div v-if="tab === 'register'" id='reg_input'>
+          <input v-model='registerForm.first_name' class='log' type='text' name='name' placeholder='Ном'>
+          <input v-model='registerForm.last_name' class='log' type='text' name='name' placeholder='Насаб'>
+          <input v-model='registerForm.email' class='log' type='text' name='login' placeholder='E-mail'>
+          <input v-model='registerForm.password' class='log' type='password' name='password_reg' placeholder='Парол'>
+          <input
+            :disabled='!registerForm.first_name && !registerForm.last_name && !registerForm.email && !registerForm.password'
+            class='submit'
+            type='submit'
+            value='Бақайдгирӣ'>
         </div>
       </form>
     </div>
   </div>
 </template>
-
-<script setup>
-function openMenu() {
-  document.getElementById("active").classList.toggle('active');
-}
-function log() {
-  document.getElementById("log_b").classList.add('log_act');
-  document.getElementById("reg_b").classList.remove('reg_act');
-  document.getElementById("log_input").classList.remove('none');
-  document.getElementById("reg_input").classList.add('none');
-}
-function reg() {
-  document.getElementById("reg_b").classList.add('reg_act');
-  document.getElementById("log_b").classList.remove('log_act');
-  document.getElementById("log_input").classList.add('none');
-  document.getElementById("reg_input").classList.remove('none');
-}
-</script>
-
-<style scoped>
-
-</style>

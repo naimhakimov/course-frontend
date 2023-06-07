@@ -195,6 +195,10 @@ li {
   font-weight: 700;
   border-radius: 6px;
   margin-top: 20px;
+
+  &:disabled {
+    opacity: .6;
+  }
 }
 
 .log {

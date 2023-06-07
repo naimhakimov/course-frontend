@@ -5,6 +5,10 @@ export function login(body) {
   return HTTP.post('/login', body)
 }
 
+export function register(body) {
+  return HTTP.post('/register', body)
+}
+
 // users
 export function getUsers() {
   return HTTP.get('/users')
