@@ -3,7 +3,6 @@
 import { onMounted, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { QuillEditor } from '@vueup/vue-quill'
-import ImageUploader from 'quill-image-uploader';
 
 import {
   createLecture,
@@ -19,28 +18,6 @@ const lecture = reactive({ title: '', file: null, description: '' })
 const description = ref(null)
 const route = useRoute()
 const router = useRouter()
-
-const modules = {
-  name: 'imageUploader',
-  module: ImageUploader,
-  options: {
-    upload: file => {
-      return new Promise((resolve, reject) => {
-        let reader = new FileReader();
-
-        reader.readAsDataURL(file);
-
-        reader.onload = function() {
-          resolve(reader.result);
-        };
-
-        reader.onerror = function() {
-          reject(reader.error);
-        };
-      })
-    }
-  }
-}
 
 onMounted(async () => {
   if (route.params.id) {
@@ -102,7 +79,7 @@ function editorChange() {
 
     <div>
       <label class="form-label">Тавсиф</label>
-      <QuillEditor contentType='html' v-model:content='lecture.description' :modules="modules" toolbar="full" />
+      <QuillEditor contentType='html' v-model:content='lecture.description' toolbar="full" />
     </div>
 
     <div>
